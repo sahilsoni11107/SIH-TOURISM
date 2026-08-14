@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0275d8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        /* Tab Bar Styling */
+        .tab-header {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+            gap: 5px;
+        }
+        .tab-btn {
+            flex: 1;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #555;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            background-color: #e5e5e5;
+        }
+        /* Style for the active/selected tab */
+        .tab-btn.active {
+            background-color: #0275d8;
+            color: white;
+            border-color: #0275d8;
+        }
+
+        /* Tab Content Control */
+        .tab-content {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block; /* Visible when active class is added */
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .radio-group label, .checkbox-group label {
+            font-weight: normal;
+            display: inline;
+            cursor: pointer;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        /* Action Buttons styling */
+        .btn-container {
+            margin-top: 25px;
+        }
+        button.submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button.submit-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Smooth fade animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✈️ Travel Planner</h1>
+
+    <!-- Clickable Header Tabs -->
+    <div class="tab-header">
+        <button type="button" class="tab-btn active" onclick="switchTab(event, 'section1')">1. Accommodation & Expenses</button>
+        <button type="button" class="tab-btn" onclick="switchTab(event, 'section2')">2. Route & Checklist</button>
+    </div>
+
+    <form action="#" method="POST">
+        
+        <!-- TAB CONTENT 1: Accommodation & Expenses -->
+        <div id="section1" class="tab-content active">
+            <!-- Stay Choice -->
+            <div class="form-group">
+                <label>Do you have a place to stay? (Stay Confirmation)</label>
+                <div class="radio-group">
+                    <div>
+                        <input type="radio" id="stay-yes" name="stay_status" value="yes" checked>
+                        <label for="stay-yes">Yes</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="stay-no" name="stay_status" value="no">
+                        <label for="stay-no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchase Input -->
+            <div class="form-group">
+                <label for="purchase-items">Things to Purchase / Shopping List:</label>
+                <input type="text" id="purchase-items" name="purchase_items" placeholder="e.g., Clothes, sunscreen, local souvenirs">
+            </div>
+
+            <!-- Food Input -->
+            <div class="form-group">
+                <label for="food-preferences">Food & Dining Plans:</label>
+                <input type="text" id="food-preferences" name="food_plans" placeholder="e.g., Street food, restaurant reservations, snacks">
+            </div>
+        </div>
+
+        <!-- TAB CONTENT 2: Route Selection & Essentials Checklist -->
+        <div id="section2" class="tab-content">
+            <!-- Route Choice -->
+            <div class="form-group">
+                <label for="travel-route">Choose your Route of Travel:</label>
+                <select id="travel-route" name="travel_route">
+                    <option value="" disabled selected>-- Select a route mode --</option>
+                    <option value="flight">Flight (Air Route)</option>
+                    <option value="train">Train (Rail Route)</option>
+                    <option value="road-bus">Bus (Road Route)</option>
+                    <option value="road-car">Self-Drive / Car (Road Route)</option>
+                </select>
+            </div>
+
+            <!-- Essentials Checklist -->
+            <div class="form-group">
+                <label>Have you packed these Basic Travel Things?</label>
+                <div class="checkbox-group" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                    <div>
+                        <input type="checkbox" id="item-id" name="essentials" value="id_passport">
+                        <label for="item-id">ID Card / Passport / Tickets</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="item-cash" name="essentials" value="cash_cards">
+                        <label for="item-cash">Cash and Credit Cards</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="item-clothes" name="essentials" value="clothes">
+                        <label for="item-clothes">Sufficient Clothes</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="item-charger" name="essentials" value="charger">
+                        <label for="item-charger">Phone & Electronic Chargers</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="item-medical" name="essentials" value="medical_kit">
+                        <label for="item-medical">First Aid / Basic Medicines</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Submission Button -->
+        <div class="btn-container">
+            <button type="submit" class="submit-btn">Save Complete Travel Plan</button>
+        </div>
+    </form>
+</div>
+
+<!-- JavaScript to Switch Tabs -->
+<script>
+    function switchTab(event, tabId) {
+        // 1. Hide all tab panels
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+
+        // 2. Clear highlighting active styles from buttons
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // 3. Show selected tab panel and highlight clicked button
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
