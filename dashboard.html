@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पाsage-dashboard</title>
+    <link rel="stylesheet" href="../style/dashboard.css">
+</head>
+<body>
+    <!-- menu drawer -->
+    <div class="menu-drawer" id="menuoverlay"></div>
+    <aside class="sideMenu" id="sideMenu">
+        <div class="menu-header">
+            <a href="account.html">
+                <div class="account-info">
+                    <div class="profile-pic">                       <!--avatar-pill-->
+                        <img src="photo/profile.jpg" alt="Profile Picture">
+                    </div>
+                </a>
+                <div class="account-details">
+                        <h4 class="menu-user-name">account</h4>
+                        <p class="menu-user-sub">Banaras Cultural Tour</p>
+                </div>
+            </div>
+            <button class="close-menu" id="closeMenuBtn" aria-label="close menu">&times;</button>
+        </div>
+        <nav class="menu-nav">
+            <a href="dashboard.html" class="nav-item active"><span class="nav-icon">📊</span> dashboard</a>
+            <a href="heritage.html" class="nav-item"><span class="nav-icon">🗺️</span> Heritage Map</a>
+            <a href="to-do.html" class="nav-item"><span class="nav-icon">🗓️</span> Today's Plan</a>
+            <a href="hotspots.html" class="nav-item"><span class="nav-icon">📜</span> HotSpots</a>
+            <a href="marketplace.html" class="nav-item"><span class="nav-icon">👛</span> Market Place</a>
+            <a href="route.html" class="nav-item"><span class="nav-icon">🛣️</span> Route Planner</a>
+            <a href="translator.html" class="nav-item"><span class="nav-icon">🌐</span> Translator</a>
+            <a href="settings.html" class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+           <footer class="menu-footer">
+                <a href="logout.html" class="nav-item"><span class="nav-icon" style="color: red; align-content: bottom;">⏻</span> log out</a>
+                <br>
+                <span>पाsage • SIH 2026</span>   
+           </footer>
+        </nav>
+    </aside>
+
+    <!--top ribbon-->
+    <header class="head">
+        <div class="headLeft">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="open menu">☰</button>
+            <div class="logo">
+                <span><img src="photo/logo.png" alt="Logo"></span>
+                <span class="brand-title">पाsage <span class="badge-sih">SIH 2026</span></span>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button class="search-btn" aria-label="search">🔍|</button>
+            <button class="voice-search-btn" id="voiceSearchBtn" title="Voice Search">🎤</button>
+        </div>
+
+        <div class="headRight">
+            <a href="notifications.html" class="notification-icon" title="Notifications">🔔</a>
+            <a href="account.html" title="Profile"><div class="avatar-pill" title="Account Details">👤</div></a>
+        </div>
+    </header>
+
+    <!-- sub-header-->
+     <section class="utility-strip">
+        <div class="translate 🌐">
+            <span class="translate-icon">🌐(language)</span>
+        </div>
+        <div class="strip-right">
+            <a href="weather.html" class="widget-pill">
+                <span class="widget-icon">☀️</span>
+                <span class="widget-text">Weather</span>    <!--can add budget slide-->
+            </a>
+        </div>
+     </section>
+
+     <!--Photo Carousel (10-second automatic cycle)-->
+     <section class="carousel-cointainer">
+        <div class="carousel-track">
+            <div class="carousel-slide active">
+                <img src="../photo/ghats.jpg" alt="Varanasi Ghats Ganga Aarti">
+                <div class="slide-caption">
+                    <h4>Subah-e-Banaras & Ganga Aarti</h4>
+                    <p>Witness spiritual devotion at Dashashwamedh Ghat</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../photo/sarnath.jpg" alt="Dhamek Stupa Sarnath">
+                <div class="slide-caption">
+                    <h4>Dhamek Stupa, Sarnath</h4>
+                    <p>Cradle of Buddhist heritage and tranquility</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="../photo/kashi-temple.jpg" alt="Kashi Vishwanath Corridor">
+                <div class="slide-caption">
+                    <h4>Kashi Vishwanath Temple</h4>
+                    <p>The eternal heart of spiritual India</p>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <!-- main-->
+      <main class="grid">
+        <div class="grid-left"> <!--leftside column-->
+            <section class="map-card" id="mapCard">
+                <div class="card-header">
+                    <h3>📍map</h3>
+                    <div class="map-filter-pills">
+                        <button class="filter-pill active" data-filter="all">All</button>
+                        <button class="filter-pill" data-filter="monuments">Monuments</button>
+                        <button class="filter-pill" data-filter="transit">public transport terminal</button>
+                        <button class="filter-pill" data-filter="artisans">Artisans</button>
+                        <button class="restroom" data-filter="toilet">restroom</button>
+                        <button class="hotspots" data-filter="famous area">hotspots</button>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1234567890123!2d82.97391431543123!3d25.31764512345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e32b123456789%3A0xabcdef1234567890!2sBanaras%20Cultural%20Tour!5e0!3m2!1sen!2sin!4v1234567890123" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </section>
+            <!--folk tale section-->
+            <section class="outer" id="folkTaleSection">
+                <div class="card-header">
+                    <h3>📖 Folk Tale</h3>
+                </div>
+                <div class="folk content">
+                    <p>Discover the rich tapestry of folk tales from Banaras, where every story is a window into the city's vibrant culture and history. From legendary heroes to mystical creatures, immerse yourself in the narratives that have been passed down through generations.</p>
+                    <a href="folk-tales.html" class="read-more-btn">Read More</a>
+                    <article class="folk-item">
+                        <div class="folk-icon">🏰</div>
+                            <div class="folk-content">
+                                <h4>The Secret Wind Channels of Hawa Mahal</h4>
+                                <p>Constructed in 1799 by Maharaja Sawai Pratap Singh, the 953 jharokhas were engineered using the Venturi effect to allow royal ladies to watch street festivals unseen while remaining cool in desert heat.</p>
+                                <div class="folk-actions">
+                                    <button class="btn-action btn-play" onclick="playFolklore('Hawa Mahal Wind Channels')">▶ Listen (2:30m)</button>
+                                    <button class="btn-action btn-read" onclick="readFolklore('Hawa Mahal')">Read Folklore</button>
+                                </div>
+                            </div>
+                    </article>
+
+                    <article class="folk-item">
+                        <div class="folk-icon">⚔️</div>
+                            <div class="folk-content">
+                                <h4>The Legend of Jaivana Cannon</h4>
+                                <p>Cast in 1720 at Jaigarh Fort, local folklore claims when the cannon was test-fired, the massive shockwave created an artificial lake in Chaksu, 35 km away.</p>
+                                <div class="folk-actions">
+                                    <button class="btn-action btn-play" onclick="playFolklore('Legend of Jaivana Cannon')">▶ Listen (3:15m)</button>
+                                    <button class="btn-action btn-read" onclick="readFolklore('Jaigarh Fort')">Read Folklore</button>
+                                </div>
+                            </div>
+                    </article>
+
+                </div>
+            </section>
+        </div>
+
+        <!--rightside column-->
+        <div class="rightside-column">
+
+            <!--route planner-->
+            <section class="card" id="planner">
+                <div class="card-header">
+                    <h3>🗓️ Today's Plan</h3>
+                    <span class="plan-date">Date: <span id="currentDate"></span></span>
+                </div>
+                <ul class="plan-timeline">
+                    <!--connect to route data(for dynamic updates from route page)-->
+                </ul>
+            </section>
+
+            <!--to-do list-->
+            <section class="card" id="toDoList">
+                <div class="card-header">
+                    <h3>📝 To-Do List</h3>
+                </div>
+                <ul class="to-do-items">
+                    <!--connect to to-do data(for dynamic updates from to-do page and editing)-->
+                </ul>
+            </section>
+            <!--else-->
+        </div>
+      </main>
+      <footer class="footer">
+            <button class="sos-btn" id="sosBtn">⚠️ E-SATHI SOS / 112</button>
+                <p>&copy; 2026 पsage. All rights reserved.</p>
+            <div class="footer-actions">
+                <button class="footer-btn" onclick="alert('Tourist Scam Reporting Portal triggered.')">🛡️ Report Fraud</button>
+                <button class="footer-btn" onclick="alert('Calling National Tourism Helpline: 1363')">🎧 Helpline 1363</button>
+            </div>
+      </footer>
+      <!--AI chatbot-->
+        <div class="chatbot-container(hidden)">
+            <div class="chat-header">
+                <div class="title-area">
+                    <span class="chat-avatar"> 🤖 </span>
+                    <div>
+                        <h4 class="bot-title">पाsage chatbot</h4>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-bubble ai">
+                    greeting!
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput" placeholder="Ask AI travel assistant..." class="chat-input">
+                <button id="sendChatBtn" class="chat-send-btn">➤</button>
+            </div>
+        </div>
+        <button id="chatToggleBtn" class="chat-fab" title="Open AI Travel Assistant">🤖</button>
+
+
+      <script src="../javascript/dashboard.js"></script>
+</body>
+</html>
