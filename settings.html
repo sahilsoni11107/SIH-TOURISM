@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings & Accessibility | YatraSathi SIH 2026</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="back-link" title="Return to Dashboard">← Dashboard</a>
+      <div class="brand-badge">
+        <span class="brand-icon">🧭</span>
+        <span class="brand-title">YatraSathi <span class="badge-sih">SIH 2026</span></span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="sync-status">● Synced to Device</span>
+      <div class="avatar-pill" id="headerAvatar">JS</div>
+    </div>
+  </header>
+
+  <main class="settings-container">
+
+    <!-- Account & Session Profile Card -->
+    <section class="settings-card profile-card">
+      <div class="profile-info-wrap">
+        <div class="profile-avatar-large" id="profileAvatar">JS</div>
+        <div class="profile-meta">
+          <div class="name-row">
+            <h2 id="profileName">Jay Sharma</h2>
+            <span class="badge-tourist-type" id="profileBadge">Domestic Tourist (Verified)</span>
+          </div>
+          <p id="profileContact">📱 +91 98765 43210 • 📧 jay.sharma@example.com</p>
+          <p class="profile-sub">Digital Tourist ID: <strong>IND-RJ-2026-8841</strong></p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="btn-secondary-action" onclick="editProfile()">Edit Profile</button>
+        <button class="btn-auth-toggle" id="authBtn" onclick="handleAuthAction()">Logout</button>
+      </div>
+    </section>
+
+    <!-- Two-Column Settings Layout -->
+    <div class="settings-grid">
+      
+      <!-- Left Column: Display, Theme & Accessibility -->
+      <div class="settings-column">
+        
+        <!-- Theme & Appearance -->
+        <section class="settings-card">
+          <div class="card-header">
+            <h3>🎨 Appearance & Dark Mode</h3>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Dark Mode Theme</strong>
+              <p>Optimized for low-light monuments & night markets</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this.checked)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Auto-Night Mode</strong>
+              <p>Automatically activate dark theme after 06:30 PM</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="autoNightToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Accessibility Controls -->
+        <section class="settings-card">
+          <div class="card-header">
+            <h3>♿ Accessibility & Readability</h3>
+            <span class="badge-info">WCAG 2.1 Ready</span>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>High Contrast Mode</strong>
+              <p>Enhance border and text contrast under bright desert sun</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="highContrastToggle" onchange="toggleHighContrast(this.checked)">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item vertical-setting">
+            <div class="setting-text">
+              <strong>App Font Size Scale</strong>
+              <p>Adjust text size across audio guides and folklore</p>
+            </div>
+            <div class="font-scale-group">
+              <button class="scale-btn" onclick="setFontScale('small')">A-</button>
+              <button class="scale-btn active" onclick="setFontScale('normal')">A (Default)</button>
+              <button class="scale-btn" onclick="setFontScale('large')">A+</button>
+              <button class="scale-btn" onclick="setFontScale('xlarge')">A++</button>
+            </div>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Screen Reader Audio Assist</strong>
+              <p>Announce crowd updates and monument notifications</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="screenReaderToggle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right Column: Language, Storage & Safety -->
+      <div class="settings-column">
+
+        <!-- Bhashini Language & Dialect Setup -->
+        <section class="settings-card">
+          <div class="card-header">
+            <h3>🌐 Language & Regional Dialects</h3>
+          </div>
+
+          <div class="setting-item vertical-setting">
+            <label for="preferredLanguage">Primary App & Translation Language</label>
+            <select id="preferredLanguage" class="custom-select" onchange="updateLanguagePref(this.value)">
+              <option value="en">English (Global)</option>
+              <option value="hi" selected>Hindi (हिंदी)</option>
+              <option value="raj">Rajasthani (राजस्थानी)</option>
+              <option value="ta">Tamil (தமிழ்)</option>
+              <option value="bn">Bengali (বাংলা)</option>
+              <option value="gu">Gujarati (ગુજરાતી)</option>
+            </select>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Auto-Translate Audio Guides</strong>
+              <p>Play regional folklore in your preferred language</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Offline Data & Storage -->
+        <section class="settings-card">
+          <div class="card-header">
+            <h3>💾 Offline Storage & Cache</h3>
+            <span class="badge-info" id="cacheSize">48.2 MB Used</span>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Pre-download Monument Packs</strong>
+              <p>Cache 3D AR models and maps for zero-network areas</p>
+            </div>
+            <button class="btn-sm-action" onclick="downloadAllPacks()">Download</button>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Clear Offline Cache</strong>
+              <p>Removes saved maps and audio guides to free space</p>
+            </div>
+            <button class="btn-sm-danger" onclick="clearOfflineData()">Clear Cache</button>
+          </div>
+        </section>
+
+        <!-- Safety, SOS & Privacy -->
+        <section class="settings-card">
+          <div class="card-header">
+            <h3>🛡️ Safety & Geofence SOS</h3>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Auto-Share SOS with Tourist Police</strong>
+              <p>Include live GPS and emergency contact info on 112 trigger</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <strong>Anti-Scam Location Alerts</strong>
+              <p>Warn when entering unverified artisan or transit zones</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Sticky Safety Footer -->
+  <footer class="app-footer">
+    <button class="sos-btn" onclick="alert('⚠️ Emergency SOS Broadcast sent to Rajasthan Tourist Police (112).')">⚠️ E-SATHI SOS / 112</button>
+    <div class="footer-links">
+      <button class="footer-btn" onclick="saveAllSettings()">💾 Save All Changes</button>
+      <button class="footer-btn" onclick="alert('Calling National Tourism Helpline: 1363')">🎧 Helpline 1363</button>
+    </div>
+  </footer>
+
+  <script src="settings.js"></script>
+</body>
+</html>
