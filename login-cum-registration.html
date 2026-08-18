@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login and Registration</title>
+
+    <style>
+
+      
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+              margin: 0;
+            padding: 20px;
+             min-height: 100vh;
+              display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #333;
+
+            background-image: url("travel2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            transition: 0.3s;
+        }
+
+
+      
+        .container {
+            width: 90%;
+            max-width: 450px;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:0 5px 20px rgba(0, 0, 0, 0.25);
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+
+     
+
+        .settings-container {
+            position: absolute;
+            top: 15px;
+            right: 16px;
+        }
+
+        .dots-btn {
+            font-size: 24px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            user-select: none;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+
+            position: absolute;
+
+            right: 0;
+            top: 30px;
+
+            width: 180px;
+
+            background: white;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.2);
+
+            list-style: none;
+
+            padding: 8px 0;
+            margin: 0;
+
+            z-index: 10;
+        }
+
+        #menu-toggle:checked ~ .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            padding: 10px 15px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: #f0f0f0;
+        }
+
+
+     
+        #dark-toggle {
+            display: none;
+        }
+
+
+      
+        input[name="tab-group"] {
+            display: none;
+        }
+
+        .tab-headers {
+            display: flex;
+
+            border-bottom: 2px solid #ccc;
+
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+
+            padding: 10px;
+
+            text-align: center;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            opacity: 0.6;
+
+            border-bottom: 3px solid transparent;
+        }
+
+        #tab-login:checked ~ .tab-headers #btn-login,
+        #tab-reg:checked ~ .tab-headers #btn-reg {
+            opacity: 1;
+
+            border-bottom-color: #007bff;
+        }
+
+
+
+        .tab-content {
+            display: none;
+        }
+
+        #tab-login:checked ~ .login-section {
+            display: block;
+        }
+
+        #tab-reg:checked ~ .reg-section {
+            display: block;
+        }
+  .form-group {
+            margin-bottom: 15px;
+        }
+ .form-group label {
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 13px;
+        }
+.form-group input,
+        .form-group select {
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            background: white;
+
+            color: #333;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+        }
+ .captcha-box {
+            background: rgba(0, 0, 0, 0.06);
+
+            padding: 12px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            border-radius: 5px;
+
+            margin-bottom: 10px;
+        }
+ .action-btn {
+            width: 100%;
+
+            padding: 11px;
+
+            background-color: #007bff;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+ .action-btn:hover {
+            background-color: #0056b3;
+        }
+ .links {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 12px;
+
+            font-size: 12px;
+        }
+ .links span {
+            color: #007bff;
+
+            cursor: pointer;
+        }
+ .links span:hover {
+            text-decoration: underline;
+        }
+ body:has(#dark-toggle:checked) {
+            color: white;
+
+          
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)
+                ),
+                ur("travel2.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+ body:has(#dark-toggle:checked) .container {
+            background: rgba(30, 30, 30, 0.95);
+
+            color: white;
+
+            box-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.6);
+        }
+body:has(#dark-toggle:checked)
+        .form-group input,
+
+        body:has(#dark-toggle:checked)
+        .form-group select {
+
+            background-color: #2b2b2b;
+
+            color: white;
+
+            border-color: #555;
+        }
+  body:has(#dark-toggle:checked)
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+ body:has(#dark-toggle:checked)
+        .captcha-box {
+            background-color: #333;
+
+            color: white;
+        }
+ body:has(#dark-toggle:checked)
+        .dropdown-menu {
+
+            background-color: #2b2b2b;
+
+            color: white;
+
+            border-color: #555;
+        }
+body:has(#dark-toggle:checked)
+        .dropdown-menu li:hover {
+
+            background-color: #444;
+        }
+body:has(#dark-toggle:checked)
+        .tab-headers {
+
+            border-color: #555;
+        }
+ @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+
+                background-attachment: scroll;
+            }
+
+            .container {
+                width: 94%;
+
+                padding: 20px;
+            }
+
+            .tab-btn {
+                font-size: 14px;
+
+                padding: 9px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .form-group input,
+            .form-group select {
+                font-size: 14px;
+
+                padding: 9px;
+            }
+
+            .action-btn {
+                font-size: 14px;
+
+                padding: 10px;
+            }
+
+            .dropdown-menu {
+                width: 160px;
+            }
+        }
+ @media (max-width: 400px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                width: 100%;
+
+                padding: 18px;
+            }
+
+            .tab-btn {
+                font-size: 13px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .links {
+                font-size: 11px;
+            }
+        }
+  @media (min-width: 1200px) {
+
+            .container {
+                max-width: 500px;
+
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 12px;
+
+                font-size: 16px;
+            }
+
+            .action-btn {
+                padding: 12px;
+
+                font-size: 17px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+ <input
+            type="radio"
+            id="tab-login"
+            name="tab-group"
+            checked
+        > <input
+            type="radio"
+            id="tab-reg"
+            name="tab-group"
+        >
+ <div class="settings-container">
+
+            <label
+                for="menu-toggle"
+                class="dots-btn" 
+                >
+               &#8942;  
+            </label>
+ <input
+                type="checkbox"
+                id="menu-toggle"
+            >
+ <ul class="dropdown-menu">
+
+             <li>
+                    <label for="dark-toggle">
+                        Page Dark Mode
+                    </label>
+
+                    <input
+                        type="checkbox"
+                        id="dark-toggle"
+                    >
+                </li>
+<li>Menu</li>
+
+                <li>Search Profile  </li>
+                 <li>
+                    Plane History
+                </li>
+                
+                <li>
+                    Accessibility
+                </li>
+              
+                <li>
+                    Log Out
+                </li>
+
+            </ul>
+
+        </div>
+ <div class="tab-headers">
+
+            <label
+                for="tab-login"
+                class="tab-btn"
+                id="btn-login"
+            >
+                Log In
+            </label>
+
+            <label
+                for="tab-reg"
+                class="tab-btn"
+                id="btn-reg"
+            >
+                Registration
+            </label>
+
+        </div>
+
+<div class="tab-content login-section">
+
+            <h2>Log In</h2>
+
+
+            <div class="form-group">
+
+                <label>
+                    Username / Gmail
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Enter username or email"
+                >
+             </div>
+ <div class="form-group">
+  <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    placeholder="Enter password"
+                >
+ </div>
+ <div class="form-group">
+
+                <div class="captcha-box">
+                    X7r3K
+                </div>
+
+                <label>
+                    Enter CAPTCHA
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Type captcha"
+                >
+  </div>
+ <button class="action-btn">
+                Log In
+            </button>
+ <div class="links">
+
+                <span>
+                    Forgot Password?
+                </span>
+
+                <span>
+                    Find Username
+                </span>
+
+            </div>
+
+        </div>
+
+ <div class="tab-content reg-section">
+
+            <h2>Registration</h2>
+
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Full name"
+                >
+
+            </div>
+ <div class="form-group">
+
+                <label>
+                    Date of Birth (DOB)
+                </label>
+
+                <input
+                    type="date"
+                >
+             </div>
+<div class="form-group">
+
+                <label>
+                    Permanent Address
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Address"
+                >
+  </div>
+ <div class="form-group">
+
+                <label>
+                    Gmail
+                </label>
+
+                <input
+                    type="email"
+                    placeholder="name@gmail.com"
+                >
+ </div>
+<div class="form-group">
+
+                <label>
+                    Phone Number & OTP
+                </label>
+
+                <input
+                    type="text"
+                    placeholder="Phone number"
+                    style="margin-bottom:5px;"
+                >
+   <input
+                    type="text"
+                    placeholder="Enter OTP"
+                >
+   </div>
+  <div class="form-group">
+
+                <label>
+                    Gender
+                </label>
+                 <select>
+
+                    <option>
+                        Select Gender
+                    </option>
+
+                    <option>
+                        Male
+                    </option>
+
+                    <option>
+                        Female
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button class="action-btn">
+                Complete Registration
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
