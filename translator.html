@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पाsage-dashboard</title>
+    <link rel="stylesheet" href="../style/dashboard.css">
+</head>
+<body>
+    <!-- menu drawer -->
+    <div class="menu-drawer" id="menuoverlay"></div>
+    <aside class="sideMenu" id="sideMenu">
+        <div class="menu-header">
+            <a href="account.html">
+                <div class="account-info">
+                    <div class="profile-pic">                       <!--avatar-pill-->
+                        <img src="photo/profile.jpg" alt="Profile Picture">
+                    </div>
+                </a>
+                <div class="account-details">
+                        <h4 class="menu-user-name">account</h4>
+                        <p class="menu-user-sub">Banaras Cultural Tour</p>
+                </div>
+            </div>
+            <button class="close-menu" id="closeMenuBtn" aria-label="close menu">&times;</button>
+        </div>
+        <nav class="menu-nav">
+            <a href="dashboard.html" class="nav-item active"><span class="nav-icon">📊</span> dashboard</a>
+            <a href="heritage.html" class="nav-item"><span class="nav-icon">🗺️</span> Heritage Map</a>
+            <a href="to-do.html" class="nav-item"><span class="nav-icon">🗓️</span> Today's Plan</a>
+            <a href="hotspots.html" class="nav-item"><span class="nav-icon">📜</span> HotSpots</a>
+            <a href="marketplace.html" class="nav-item"><span class="nav-icon">👛</span> Market Place</a>
+            <a href="route.html" class="nav-item"><span class="nav-icon">🛣️</span> Route Planner</a>
+            <a href="translator.html" class="nav-item"><span class="nav-icon">🌐</span> Translator</a>
+            <a href="settings.html" class="nav-item"><span class="nav-icon">⚙️</span> Settings</a>
+           <footer class="menu-footer">
+                <a href="logout.html" class="nav-item"><span class="nav-icon" style="color: red; align-content: bottom;">⏻</span> log out</a>
+                <br>
+                <span>पाsage • SIH 2026</span>   
+           </footer>
+        </nav>
+    </aside>
+
+    <!--top ribbon-->
+    <header class="head">
+        <div class="headLeft">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="open menu">☰</button>
+            <div class="logo">
+                <span><img src="photo/logo.png" alt="Logo"></span>
+                <span class="brand-title">पाsage <span class="badge-sih">SIH 2026</span></span>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search city/location">
+            <button class="search-btn" aria-label="search">🔍|</button>
+            <button class="voice-search-btn" id="voiceSearchBtn" title="Voice Search">🎤</button>
+        </div>
+
+        <div class="headRight">
+            <a href="notifications.html" class="notification-icon" title="Notifications">🔔</a>
+            <a href="account.html" title="Profile"><div class="avatar-pill" title="Account Details">👤</div></a>
+        </div>
+    </header>
+
+    <!-- sub-header-->
+     <section class="utility-strip">
+        <div class="translate 🌐">
+            <span class="translate-icon"style="color:white;" >🌐(language)</span>
+        </div>
+        <div class="strip-right">
+            <a href="weather.html" class="widget-pill">
+                <span class="widget-icon">☀️</span>
+                <span class="widget-text">Weather</span>    <!--can add budget slide-->
+            </a>
+        </div>
+     </section>
+     <main>
+        <div class="container">
+            <div class="trans-head">
+                <grid>
+                    <div>
+                        <h2>translating from </h2>
+                    </div>
+                    <div>
+                        <h2>translating to</h2>
+                    </div>
+                </grid>
+                <div class="trans-body">
+                <grid>
+                    <div>
+                        <h2>translating from </h2>
+                    </div>
+                    <div>
+                        <h2>translating to</h2>
+                    </div>
+                </grid>
+            </div>
+        </div>
+
+    </main>
+        </footer>
+      <!--AI chatbot-->
+        <div class="chatbot-container(hidden)">
+            <div class="chat-header">
+                <div class="title-area">
+                    <span class="chat-avatar"> 🤖 </span>
+                    <div>
+                        <h4 class="bot-title">पाsage chatbot</h4>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-bubble ai">
+                    greeting!
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput" placeholder="Ask AI travel assistant..." class="chat-input">
+                <button id="sendChatBtn" class="chat-send-btn">➤</button>
+            </div>
+        </div>
+        <button id="chatToggleBtn" class="chat-fab" title="Open AI Travel Assistant">🤖</button>
+
+
+     <script src="../javascript/dashboard.js"></script>
+</body>
+</html>
